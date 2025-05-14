@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - FITNEED GYM</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --special-color: #ff6b00;
+        }
+
+        body {
+            font-family: 'Sora', sans-serif;
+            line-height: 1.6;
+            color: #fff;
+            background-color: #121212;
+            margin: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Header Styles */
+        .primary-header {
+            background-color: #1a1a1a;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .fa-dumbbell {
+            color: var(--special-color);
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: var(--special-color);
+        }
+
+        .btn {
+            background-color: var(--special-color);
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff8c3f;
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+            background: transparent;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            border: 0;
+        }
+
+        /* FAQ Styles */
+        .faq-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/program-img1.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 6rem 0;
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .faq-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .special-text {
+            color: var(--special-color);
+        }
+
+        .faq-section {
+            padding: 2rem 0 4rem;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-category {
+            margin-bottom: 3rem;
+        }
+
+        .category-title {
+            font-size: 1.8rem;
+            color: var(--special-color);
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--special-color);
+            padding-bottom: 0.5rem;
+        }
+
+        .faq-item {
+            margin-bottom: 1.5rem;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .faq-question {
+            background-color: #232323;
+            padding: 1.25rem;
+            font-weight: 600;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question:after {
+            content: '\f107';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question:after {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 1.25rem;
+            max-height: 1000px;
+        }
+
+        .faq-bottom {
+            text-align: center;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-card {
+            background-color: #232323;
+            padding: 1.5rem;
+            border-radius: 8px;
+            width: 200px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .contact-card i {
+            font-size: 2.5rem;
+            color: var(--special-color);
+            margin-bottom: 1rem;
+        }
+
+        /* Footer Styles */
+        .primary-footer {
+            background-color: #1a1a1a;
+            padding: 3rem 0 1rem;
+        }
+
+        .even-columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+        .primary-footer-links,
+        .contact-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .primary-footer-links li,
+        .contact-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .primary-footer-links a,
+        .contact-links a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .primary-footer-links a:hover,
+        .contact-links a:hover {
+            color: var(--special-color);
+        }
+
+        .contact-links i {
+            margin-right: 0.5rem;
+            color: var(--special-color);
+        }
+
+        hr {
+            border-color: #333;
+            margin: 2rem 0;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .even-columns {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                position: fixed;
+                z-index: 1000;
+                inset: 0 0 0 30%;
+                flex-direction: column;
+                padding: min(30vh, 10rem) 2rem;
+                background: rgba(0, 0, 0, 0.9);
+                backdrop-filter: blur(1rem);
+                transform: translateX(100%);
+                transition: transform 350ms ease-out;
+            }
+
+            .nav-list[data-visible="true"] {
+                transform: translateX(0);
+            }
+
+            .mobile-nav-toggle {
+                display: block;
+                z-index: 9999;
+            }
+
+            .display-sm-none {
+                display: none;
+            }
+
+            .text-center-sm-only {
+                text-align: center;
+            }
+
+            .even-columns {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-hero h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="primary-header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a class="logo" href="index.html">
+                    <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                    <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                    <span class="visually-hidden">Menu</span>
+                </button>
+                <nav class="primary-navigation" id="primary-navigation">
+                    <ul aria-label="Primary" role="list" class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about-section">About</a></li>
+                        <li><a href="index.html#programs-section">Programs</a></li>
+                        <li><a href="index.html#products-section">Products</a></li>
+                        <li><a href="index.html#pricing-section">Pricing</a></li>
+                    </ul>
+                </nav>
+                <button class="btn | display-sm-none" onclick="location.href='login.html'">LOGIN</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="faq-hero">
+        <div class="container">
+            <h1><span class="special-text">Frequently</span> Asked Questions</h1>
+            <p>Find answers to common questions about our gym services, programs, and policies.</p>
+        </div>
+    </div>
+
+    <main class="faq-section">
+        <div class="container">
+            <div class="faq-container">
+                <div class="faq-category">
+                    <h2 class="category-title">Membership</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">What types of memberships do you offer?</div>
+                        <div class="faq-answer">
+                            <p>We offer three main membership plans:</p>
+                            <ul>
+                                <li><strong>Basic Plan (GH₵100/month)</strong>: Access once per week</li>
+                                <li><strong>Standard Plan (GH₵200/month)</strong>: Access three times per week</li>
+                                <li><strong>Premium Plan (GH₵300/month)</strong>: Access five times per week</li>
+                            </ul>
+                            <p>All plans include access to our dance classes, gym equipment, and lockers. The Standard and Premium plans also include a personal trainer.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">Can I freeze my membership temporarily?</div>
+                        <div class="faq-answer">
+                            <p>Yes, you can freeze your membership for up to 60 days per calendar year. There is a small administrative fee of GH₵25 for each freeze request. To freeze your membership, please contact our front desk staff or send an email to membership@fitneed.com at least 7 days before the requested freeze date.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How do I cancel my membership?</div>
+                        <div class="faq-answer">
+                            <p>To cancel your membership, please visit our front desk in person or send an email to membership@fitneed.com. We require a 30-day notice for all cancellations. Any unused prepaid membership fees will be refunded on a prorated basis. Please note that there may be a cancellation fee if you're within a contract period.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2 class="category-title">Programs & Classes</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">How do I sign up for classes?</div>
+                        <div class="faq-answer">
+                            <p>You can sign up for classes through our website, mobile app, or at the front desk. We recommend booking at least 24 hours in advance as classes can fill up quickly. You can book classes up to 7 days in advance. If you need to cancel, please do so at least 2 hours before the class starts to avoid a no-show fee.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">What should I bring to my training session?</div>
+                        <div class="faq-answer">
+                            <p>For your training session, please bring:</p>
+                            <ul>
+                                <li>Comfortable workout clothes</li>
+                                <li>Athletic shoes</li>
+                                <li>Water bottle</li>
+                                <li>Small towel</li>
+                                <li>Any specific equipment your trainer has requested</li>
+                            </ul>
+                            <p>We provide lockers for your belongings, but please bring your own lock.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">How long are the training sessions?</div>
+                        <div class="faq-answer">
+                            <p>Our standard training sessions are 60 minutes long. This includes a 5-minute warm-up, 50 minutes of exercise, and a 5-minute cool-down. We also offer 30-minute express sessions and 90-minute extended sessions for those who need more time. Please discuss your specific needs with your trainer.</p>
+                        </div></div>
+                    </div>
+    
+                    <div class="faq-category">
+                        <h2 class="category-title">Facilities & Equipment</h2>
+                        <div class="faq-item">
+                            <div class="faq-question">What kind of equipment do you have?</div>
+                            <div class="faq-answer">
+                                <p>Our gym is equipped with state-of-the-art fitness equipment including:</p>
+                                <ul>
+                                    <li>Cardio machines (treadmills, ellipticals, stationary bikes, rowing machines)</li>
+                                    <li>Free weights (dumbbells ranging from 2-50kg, barbells, weight plates)</li>
+                                    <li>Resistance machines targeting all major muscle groups</li>
+                                    <li>Functional training area with kettlebells, medicine balls, battle ropes, and TRX systems</li>
+                                    <li>Dedicated stretching and mobility area</li>
+                                    <li>Group exercise studio with spin bikes</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Are there showers and changing rooms available?</div>
+                            <div class="faq-answer">
+                                <p>Yes, we provide clean and spacious changing rooms with showers, toilets, and lockers. Amenities like soap and hair dryers are available for your convenience. Please bring your own towel and lock for the lockers. For premium members, we offer towel service and premium grooming products.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Is there parking available?</div>
+                            <div class="faq-answer">
+                                <p>Yes, we have a dedicated parking area for members with 50 parking spaces available on a first-come, first-served basis. Parking is free for members during their workout sessions (up to 2 hours). Please display your membership card on your dashboard. Additional parking is available in the nearby public parking lot for a small fee.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="faq-category">
+                        <h2 class="category-title">Hours & Access</h2>
+                        <div class="faq-item">
+                            <div class="faq-question">What are your operating hours?</div>
+                            <div class="faq-answer">
+                                <p>Our gym operates with the following hours:</p>
+                                <ul>
+                                    <li>Monday to Friday: 5:00 AM - 11:00 PM</li>
+                                    <li>Saturday: 6:00 AM - 9:00 PM</li>
+                                    <li>Sunday: 7:00 AM - 8:00 PM</li>
+                                </ul>
+                                <p>Please note that we operate with reduced hours during public holidays. These special hours will be posted on our website and at the gym entrance in advance.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Can I bring a guest?</div>
+                            <div class="faq-answer">
+                                <p>Yes, members are welcome to bring guests. Each member is allowed up to 3 guest passes per month. Guest passes cost GH₵20 per visit and require the member to be present during the guest's workout. All guests must sign a waiver form before using the facilities. If your guest decides to join within 7 days of their visit, the guest fee will be applied toward their membership.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Are there age restrictions?</div>
+                            <div class="faq-answer">
+                                <p>Members must be at least 16 years of age to use the gym independently. Teenagers aged 16-17 require parental consent. We offer special family memberships that include supervised fitness activities for children aged 12-15 during designated hours. Children under 12 are not permitted in the workout areas but may attend specific kids' fitness classes when available.</p>
+                            </div>
+                        </div>
+                    </div>
+    
+                    <div class="faq-category">
+                        <h2 class="category-title">Products & Supplements</h2>
+                        <div class="faq-item">
+                            <div class="faq-question">Do you sell protein supplements and other fitness products?</div>
+                            <div class="faq-answer">
+                                <p>Yes, we have a variety of fitness products available for purchase at our front desk, including:</p>
+                                <ul>
+                                    <li>Protein powders and ready-to-drink protein shakes</li>
+                                    <li>Pre-workout supplements</li>
+                                    <li>BCAAs and recovery supplements</li>
+                                    <li>Energy and protein bars</li>
+                                    <li>Gym accessories (gloves, straps, belts)</li>
+                                    <li>Branded workout apparel</li>
+                                </ul>
+                                <p>Members receive a 10% discount on all product purchases.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <div class="faq-question">Can I return products if I'm not satisfied?</div>
+                            <div class="faq-answer">
+                                <p>We accept returns of unopened products within 14 days of purchase with a receipt. For opened supplements, we can only offer an exchange if there was a defect with the product. Apparel and accessories can be returned within 7 days if unused and with tags still attached. All refunds will be processed in the original form of payment.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+    
+                <div class="faq-bottom">
+                    <h3>Still have questions?</h3>
+                    <p>Contact us through any of the following methods:</p>
+                    <div class="contact-info">
+                        <div class="contact-card">
+                            <i class="fa-solid fa-phone"></i>
+                            <h4>Phone</h4>
+                            <p>+233 598301201</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fa-solid fa-envelope"></i>
+                            <h4>Email</h4>
+                            <p>georgesablah5@gmail.com</p>
+                        </div>
+                        <div class="contact-card">
+                            <i class="fa-solid fa-location-dot"></i>
+                            <h4>Location</h4>
+                            <p>KNUST, Kumasi, Ghana</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    
+        <footer class="primary-footer">
+            <div class="container">
+                <div class="even-columns text-center-sm-only">
+                    <div>
+                        <h4 class="fs-700 uppercase fw-bold">Follow us</h4>
+                        <ul class="social-icons" role="list">
+                            <li><a href=""><i class="fa-brands fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-instagram"></i></a></li>
+                            <li><a href=""><i class="fa-brands fa-linkedin"></i></a></li>
+                        </ul>
+                        <a class="logo">
+                            <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                    </div>
+                    <div>
+                        <h4 class="fs-700 uppercase fw-bold">Links</h4>
+                        <ul role="list" class="primary-footer-links">
+                            <li><a href="team.html">Our Team</a></li>
+                            <li><a href="gallery.html">Gallery</a></li>
+                            <li><a href="schedules.html">Schedules</a></li>
+                            <li><a href="faq.html">FAQ's</a></li>
+                            <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h4 class="fs-700 uppercase fw-bold">Quick Contacts</h4>
+                        <ul role="list" class="contact-links">
+                            <li><a href=""><i class="fa-solid fa-phone"></i>+233 598301201</a></li>
+                            <li><a href=""><i class="fa-solid fa-envelope"></i>georgesablah5@gmail.com</a></li>
+                            <li><a href=""><i class="fa-solid fa-user"></i>SABLAH GEORGE</a></li>
+                            <li><a href=""><i class="fa-solid fa-globe"></i>www.fitneed.com</a></li>
+                            <li><a href=""><i class="fa-solid fa-location-dot"></i>KNUST, Kumasi, Ghana</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+                <h5 class="fs-500 fw-semi-bold text-center"><span class="special-text"><i
+                            class="fa-solid fa-dumbbell"></i>FITNEED</span> Ⓒ 2025 - All Rights Reserved</h5>
+            </div>
+        </footer>
+    
+        <script>
+            // Mobile navigation toggle
+            const navToggle = document.querySelector('.mobile-nav-toggle');
+            const primaryNav = document.querySelector('.primary-navigation');
+    
+            navToggle.addEventListener('click', () => {
+                const visibility = primaryNav.getAttribute('data-visible');
+                if (visibility === "true") {
+                    primaryNav.setAttribute('data-visible', false);
+                    navToggle.setAttribute('aria-expanded', false);
+                } else {
+                    primaryNav.setAttribute('data-visible', true);
+                    navToggle.setAttribute('aria-expanded', true);
+                }
+            });
+    
+            // FAQ accordion functionality
+            const faqItems = document.querySelectorAll('.faq-item');
+    
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item && otherItem.classList.contains('active')) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        </script>
+    </body>
+    
+    </html>

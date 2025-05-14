@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNEED - Explore More Programs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        :root {
+            --clr-primary: #ff6b00;
+            --clr-secondary: #1a1a1a;
+            --clr-dark: #111111;
+            --clr-white: #ffffff;
+
+            --ff-primary: 'Sora', sans-serif;
+            --ff-secondary: 'Lora', serif;
+
+            --fw-regular: 400;
+            --fw-semi-bold: 500;
+            --fw-bold: 700;
+
+            --fs-300: 0.8125rem;
+            --fs-400: 0.875rem;
+            --fs-500: 1rem;
+            --fs-600: 1.25rem;
+            --fs-700: 1.5rem;
+            --fs-800: 2rem;
+            --fs-900: 3rem;
+        }
+
+        /* Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--ff-primary);
+            color: var(--clr-white);
+            background-color: #000000;
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .padding-block-900 {
+            padding-block: 4rem;
+        }
+
+        .padding-block-700 {
+            padding-block: 2.5rem;
+        }
+
+        /* Typography */
+        .fs-primary-heading {
+            font-size: var(--fs-900);
+        }
+
+        .fs-secondary-heading {
+            font-size: var(--fs-800);
+        }
+
+        .fs-700 {
+            font-size: var(--fs-700);
+        }
+
+        .fs-600 {
+            font-size: var(--fs-600);
+        }
+
+        .fs-500 {
+            font-size: var(--fs-500);
+        }
+
+        .fw-bold {
+            font-weight: var(--fw-bold);
+        }
+
+        .fw-semi-bold {
+            font-weight: var(--fw-semi-bold);
+        }
+
+        .uppercase {
+            text-transform: uppercase;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .special-text {
+            color: var(--clr-primary);
+        }
+
+        /* Header */
+        .primary-header {
+            background-color: var(--clr-secondary);
+            padding: 1rem 0;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: var(--fs-700);
+            font-weight: var(--fw-bold);
+            color: var(--clr-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .primary-navigation {
+            margin-left: auto;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-list a {
+            color: var(--clr-white);
+            text-decoration: none;
+            font-weight: var(--fw-semi-bold);
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: var(--clr-primary);
+        }
+
+        .btn {
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 5px;
+            font-weight: var(--fw-semi-bold);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #ff8c3f;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/600');
+            background-size: cover;
+            background-position: center;
+            padding: 5rem 0;
+            text-align: center;
+        }
+
+        .hero-section h1 {
+            margin-bottom: 1rem;
+        }
+
+        /* Programs Section */
+        .programs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .program-card {
+            background-color: var(--clr-secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .program-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .program-img {
+            position: relative;
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .program-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .program-content {
+            padding: 1.5rem;
+        }
+
+        .program-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--clr-primary);
+        }
+
+        .program-content p {
+            margin-bottom: 1rem;
+        }
+
+        .program-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .program-features li {
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .program-features li::before {
+            content: "✓";
+            color: var(--clr-primary);
+            margin-right: 0.5rem;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--clr-primary);
+            color: var(--clr-primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+        }
+
+        /* Footer */
+        .primary-footer {
+            background-color: var(--clr-secondary);
+            padding: 3rem 0 1rem;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .social-icons a {
+            color: var(--clr-white);
+            font-size: var(--fs-700);
+            transition: color 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--clr-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+            }
+
+            .fs-primary-heading {
+                font-size: var(--fs-800);
+            }
+
+            .fs-secondary-heading {
+                font-size: var(--fs-700);
+            }
+
+            .programs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Mobile Nav */
+        .mobile-nav-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+                background: transparent;
+                border: none;
+                color: var(--clr-white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .visually-hidden {
+                position: absolute;
+                width: 1px;
+                height: 1px;
+                padding: 0;
+                margin: -1px;
+                overflow: hidden;
+                clip: rect(0, 0, 0, 0);
+                white-space: nowrap;
+                border: 0;
+            }
+        }
+
+        .back-to-home {
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .back-to-home a {
+            color: var(--clr-primary);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .back-to-home a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header class="primary-header">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="index.html" class="logo">
+                    <i class="fa-solid fa-dumbbell"></i>Fitneed
+                </a>
+                <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                    <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                    <span class="visually-hidden">Menu</span>
+                </button>
+                <nav class="primary-navigation" id="primary-navigation">
+                    <ul aria-label="Primary" role="list" class="nav-list">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about-section">About</a></li>
+                        <li><a href="index.html#programs-section">Programs</a></li>
+                        <li><a href="index.html#products-section">Products</a></li>
+                        <li><a href="index.html#pricing-section">Pricing</a></li>
+                    </ul>
+                </nav>
+                <button class="btn" onclick="location.href='login.html'">LOGIN</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1 class="fs-primary-heading fw-bold uppercase">Explore Our <span class="special-text">Programs</span></h1>
+            <p>Discover the full range of specialized fitness programs designed to help you achieve your health and fitness goals</p>
+        </div>
+    </section>
+
+    <section class="programs padding-block-900">
+        <div class="container">
+            <h2 class="fs-secondary-heading fw-bold uppercase text-center">Our <span class="special-text">Specialized</span> Programs</h2>
+            <p class="text-center padding-block-700">At Fitneed, we offer a diverse range of programs tailored to meet your specific fitness goals and needs.</p>
+            
+            <div class="programs-grid padding-block-700">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/crossfit.png" alt="CrossFit Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">CrossFit Training</h3>
+                        <p>High-intensity functional movements that combine elements of weightlifting, gymnastics, and cardio for complete fitness.</p>
+                        <ul class="program-features">
+                            <li>Functional movement patterns</li>
+                            <li>High-intensity workouts</li>
+                            <li>Group motivation</li>
+                            <li>Constantly varied routines</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/yoga.avif" alt="Yoga Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Yoga & Flexibility</h3>
+                        <p>Improve flexibility, balance, and mental clarity through a variety of yoga styles suitable for all levels.</p>
+                        <ul class="program-features">
+                            <li>Stress reduction</li>
+                            <li>Improved flexibility</li>
+                            <li>Better posture</li>
+                            <li>Mind-body connection</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/hiit.jpg" alt="HIIT Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">HIIT Training</h3>
+                        <p>High-Intensity Interval Training that maximizes calorie burn and improves cardiovascular health in short, efficient workouts.</p>
+                        <ul class="program-features">
+                            <li>Maximum calorie burn</li>
+                            <li>Improved metabolic rate</li>
+                            <li>Short, efficient workouts</li>
+                            <li>No equipment options</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="programs-grid padding-block-700">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/body.jpg" alt="Bodybuilding Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Bodybuilding</h3>
+                        <p>Focus on building muscle mass, definition, and symmetry through specialized weight training and nutrition plans.</p>
+                        <ul class="program-features">
+                            <li>Muscle hypertrophy</li>
+                            <li>Personalized nutrition plans</li>
+                            <li>Progressive overload</li>
+                            <li>Competition preparation</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/kick box.jpg" alt="Kickboxing Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Kickboxing</h3>
+                        <p>Combine self-defense techniques with high-energy cardio workouts to build strength, agility, and confidence.</p>
+                        <ul class="program-features">
+                            <li>Self-defense skills</li>
+                            <li>Full-body workout</li><li>Stress relief</li>
+                            <li>Improved coordination</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/pilates.avif" alt="Pilates Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Pilates</h3>
+                        <p>Low-impact core strengthening program focusing on proper mental and breathing techniques, flexibility, and balance.</p>
+                        <ul class="program-features">
+                            <li>Core stability and control</li>
+                            <li>Spinal health</li>
+                            <li>Mind-body integration</li>
+                            <li>Rehabilitative exercises</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="programs-grid padding-block-700">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/recovery.jpg" alt="Recovery Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Recovery & Mobility</h3>
+                        <p>Specialized techniques focused on improving mobility, enhancing recovery, and preventing injuries through targeted exercises.</p>
+                        <ul class="program-features">
+                            <li>Foam rolling techniques</li>
+                            <li>Mobility drills</li>
+                            <li>Fascial stretching</li>
+                            <li>Active recovery methods</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/athletic.jpg" alt="Athletic Performance Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Athletic Performance</h3>
+                        <p>Specialized training designed for athletes and those seeking to improve sports-specific strength, power, speed, and agility.</p>
+                        <ul class="program-features">
+                            <li>Sport-specific conditioning</li>
+                            <li>Explosive power development</li>
+                            <li>Agility and reaction time</li>
+                            <li>Recovery and injury prevention</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/powerlifting.jpg" alt="Powerlifting Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Powerlifting</h3>
+                        <p>A strength-focused program emphasizing progressive overload for maximum strength gains in squat, bench press, and deadlift.</p>
+                        <ul class="program-features">
+                            <li>Strength and muscle mass development</li>
+                            <li>Competition preparation</li>
+                            <li>Technical form training</li>
+                            <li>Proper nutrition guidance</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="programs-grid padding-block-700">
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/trx.jpg" alt="TRX Training">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">TRX Suspension Training</h3>
+                        <p>A high-intensity functional program utilizing body weight and suspension straps, and instability training to build core strength, balance, and functional fitness.</p>
+                        <ul class="program-features">
+                            <li>Full-body workout</li>
+                            <li>Functional movement patterns</li>
+                            <li>Muscle control and stability</li>
+                            <li>Core and total body focus</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/therapy.avif" alt="Rehabilitation Program">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Rehabilitation & Therapy</h3>
+                        <p>A physical therapy program focused on recovery, injury prevention, and managing chronic conditions through tailored exercises and specialized rehabilitation.</p>
+                        <ul class="program-features">
+                            <li>Personalized recovery plans</li>
+                            <li>Pain management techniques</li>
+                            <li>Therapeutic exercise protocols</li>
+                            <li>Medical guidance and support</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+
+                <div class="program-card">
+                    <div class="program-img">
+                        <img src="images/food.jpg" alt="Nutrition & Meal Planning">
+                    </div>
+                    <div class="program-content">
+                        <h3 class="fs-700 fw-semi-bold">Nutrition & Meal Planning</h3>
+                        <p>Specialized nutritional guidance for fitness goals, including customized meal plans, and comprehensive diet analysis.</p>
+                        <ul class="program-features">
+                            <li>Personalized nutrition assessment</li>
+                            <li>Meal timing and portion control</li>
+                            <li>Supplement guidance</li>
+                            <li>Diet plans for different goals</li>
+                        </ul>
+                        <button class="btn btn-outline">Learn More</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="back-to-home padding-block-700">
+                <p class="text-center">Looking for more program options? Contact us for a free consultation with our fitness experts.</p>
+            </div>
+            
+            <div class="back-to-home">
+                <a href="index.html">
+                    <i class="fa-solid fa-arrow-left"></i> Back to home page
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="primary-footer padding-block-900">
+        <div class="container">
+            <h5 class="fs-secondary-heading fw-bold uppercase text-center">Connect with us</h5>
+            <p class="text-center padding-block-700">Follow us on social media:</p>
+            <div class="social-media">
+                <ul aria-label="social-icons" role="list" class="social-icons">
+                    <li><a href="https://facebook.com/fitneed"><i class="fa-brands fa-facebook"></i></a></li>
+                    <li><a href="https://twitter.com/fitneed"><i class="fa-brands fa-twitter"></i></a></li>
+                    <li><a href="https://instagram.com/fitneed"><i class="fa-brands fa-instagram"></i></a></li>
+                    <li><a href="https://linkedin.com/fitneed"><i class="fa-brands fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

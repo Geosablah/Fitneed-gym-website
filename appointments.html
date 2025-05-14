@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book an Appointment | FitNeed Gym</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="appointments.css">
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <h1>Book Your Perfect Workout Session</h1>
+            <p>Transform your fitness journey with expert guidance</p>
+        </div>
+        <div class="decorative-wave"></div>
+    </header>
+
+    <main class="container">
+        <section class="appointment-card">
+            <div class="card-header">
+                <h2><i class="fas fa-calendar-alt"></i> Appointment Details</h2>
+            </div>
+            
+            <form id="appointmentForm" class="appointment-form">
+                <div class="form-grid">
+                    <div class="input-group">
+                        <input type="text" id="name" required placeholder=" ">
+                        <label for="name">Full Name</label>
+                        <i class="fas fa-user"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="email" id="email" required placeholder=" ">
+                        <label for="email">Email Address</label>
+                        <i class="fas fa-envelope"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="date" id="date" required placeholder=" ">
+                        <label for="date">Preferred Date</label>
+                        <i class="fas fa-calendar-day"></i>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="time" id="time" required placeholder=" ">
+                        <label for="time">Preferred Time</label>
+                        <i class="fas fa-clock"></i>
+                    </div>
+                </div>
+
+                <div class="input-group textarea-group">
+                    <textarea id="message" rows="4" placeholder=" "></textarea>
+                    <label for="message">Special Requests</label>
+                    <i class="fas fa-comment-dots"></i>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    Confirm Booking
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+            </form>
+        </section>
+
+        <div id="successMessage" class="success-message">
+            <i class="fas fa-check-circle"></i>
+            <h3>Booking Confirmed!</h3>
+            <p>We've sent a confirmation to your email</p>
+        </div>
+    </main>
+    <script src="appointments.js"></script>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - FITNEED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        :root {
+            --clr-primary: #F44336;
+            --clr-secondary: #1A1A1A;
+            --clr-dark: #111111;
+            --clr-white: #ffffff;
+            --ff-primary: 'Sora', sans-serif;
+            --ff-secondary: 'Lora', serif;
+        }
+
+        body {
+            font-family: var(--ff-primary);
+            color: var(--clr-white);
+            background-color: #222;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: min(1200px, 90%);
+            margin-inline: auto;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--clr-white);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .primary-navigation {
+            display: flex;
+        }
+
+        .nav-list {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-list a {
+            color: var(--clr-white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            color: var(--clr-primary);
+        }
+
+        .btn {
+            background-color: var(--clr-primary);
+            color: var(--clr-white);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #d32f2f;
+        }
+
+        .special-text {
+            color: var(--clr-primary);
+        }
+
+        .privacy-policy {
+            background-color: var(--clr-secondary);
+            border-radius: 8px;
+            padding: 2rem;
+            margin: 2rem 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .privacy-policy h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--clr-white);
+            text-align: center;
+        }
+
+        .policy-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .policy-section {
+            margin-bottom: 2rem;
+        }
+
+        .policy-section h2 {
+            color: var(--clr-primary);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #444;
+            padding-bottom: 0.5rem;
+        }
+
+        .policy-section h3 {
+            color: var(--clr-white);
+            font-size: 1.4rem;
+            margin-top: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .policy-section p {
+            margin-bottom: 1rem;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .policy-section ul {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .policy-section li {
+            margin-bottom: 0.5rem;
+        }
+
+        .policy-date {
+            text-align: center;
+            font-style: italic;
+            color: #aaa;
+            margin-top: 3rem;
+        }
+
+        .primary-footer {
+            background-color: var(--clr-secondary);
+            padding: 3rem 0 1rem;
+        }
+
+        .even-columns {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .primary-footer-links,
+        .contact-links,
+        .social-icons {
+            list-style: none;
+            padding: 0;
+        }
+
+        .primary-footer-links li,
+        .contact-links li {
+            margin-bottom: 0.75rem;
+        }
+
+        .primary-footer-links a,
+        .contact-links a {
+            color: var(--clr-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .primary-footer-links a:hover,
+        .contact-links a:hover {
+            color: var(--clr-primary);
+        }
+
+        .contact-links i {
+            margin-right: 0.5rem;
+            color: var(--clr-primary);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        hr {
+            border-color: #444;
+            margin: 2rem 0;
+        }
+
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            color: var(--clr-white);
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .back-button i {
+            margin-right: 0.5rem;
+        }
+
+        .back-button:hover {
+            color: var(--clr-primary);
+        }
+
+        .mobile-nav-toggle {
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-nav-toggle {
+                display: block;
+                background: transparent;
+                border: none;
+                color: var(--clr-white);
+                font-size: 1.5rem;
+                cursor: pointer;
+            }
+
+            .primary-navigation {
+                position: fixed;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                width: 70%;
+                background-color: var(--clr-dark);
+                padding: 2rem;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                z-index: 100;
+            }
+
+            .primary-navigation[data-visible="true"] {
+                transform: translateX(0);
+            }
+
+            .nav-list {
+                flex-direction: column;
+                margin-top: 3rem;
+            }
+
+            .display-sm-none {
+                display: none;
+            }
+
+            .text-center-sm-only {
+                text-align: center;
+            }
+
+            .privacy-policy {
+                padding: 1.5rem;
+            }
+
+            .privacy-policy h1 {
+                font-size: 2rem;
+            }
+
+            .policy-section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- HEADER -->
+        <header class="primary-header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a class="logo" href="index.html">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                        <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                        <span class="visually-hidden">Menu</span>
+                    </button>
+                    <nav class="primary-navigation" id="primary-navigation">
+                        <ul aria-label="Primary" role="list" class="nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about-section">About</a></li>
+                            <li><a href="index.html#programs-section">Programs</a></li>
+                            <li><a href="index.html#products-section">Products</a></li>
+                            <li><a href="index.html#pricing-section">Pricing</a></li>
+                        </ul>
+                    </nav>
+                    <button class="btn | display-sm-none display-md-inline-flex" onclick="location.href='login.html'">LOGIN</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- PRIVACY POLICY CONTENT -->
+        <section class="container">
+            <a href="index.html" class="back-button"><i class="fa-solid fa-arrow-left"></i> Back to Home</a>
+            
+            <div class="privacy-policy">
+                <h1>Privacy <span class="special-text">Policy</span></h1>
+                
+                <div class="policy-content">
+                    <div class="policy-section">
+                        <h2>Introduction</h2>
+                        <p>Welcome to Fitneed's Privacy Policy. This document outlines how we collect, use, protect, and handle your personal information when you use our services, website, or facilities. At Fitneed, we are committed to protecting your privacy and ensuring the security of your personal information.</p>
+                        <p>By accessing our services, you acknowledge that you have read and understood this Privacy Policy and agree to the collection and use of your information as described herein.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Information We Collect</h2>
+                        <p>We collect various types of information to provide and improve our services to you. This information may include:</p>
+                        <h3>Personal Information</h3>
+                        <ul>
+                            <li>Contact information (name, email address, phone number)</li>
+                            <li>Demographic information (age, gender)</li>
+                            <li>Health and fitness information</li>
+                            <li>Payment information</li>
+                            <li>Emergency contact details</li>
+                        </ul>
+                        
+                        <h3>Usage Information</h3>
+                        <ul>
+                            <li>Gym attendance records</li>
+                            <li>Class participation</li>
+                            <li>Equipment usage</li>
+                            <li>Website and app usage data</li>
+                            <li>Device information and IP address</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>How We Use Your Information</h2>
+                        <p>We use the collected information for various purposes, including but not limited to:</p>
+                        <ul>
+                            <li>Providing and maintaining our services</li>
+                            <li>Personalizing your fitness experience</li>
+                            <li>Processing payments and managing memberships</li>
+                            <li>Communicating with you about our services, promotions, and updates</li>
+                            <li>Improving our facilities, services, and customer experience</li>
+                            <li>Analyzing usage patterns to enhance our offerings</li>
+                            <li>Ensuring the safety and security of our members and facilities</li>
+                        </ul>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Data Security</h2>
+                        <p>We implement a variety of security measures to maintain the safety of your personal information. These include:</p>
+                        <ul>
+                            <li>Encryption of sensitive data</li>
+                            <li>Regular security assessments</li>
+                            <li>Secure access controls to our facilities and systems</li>
+                            <li>Staff training on privacy and security practices</li>
+                            <li>Regular data backups</li>
+                        </ul>
+                        <p>While we strive to use commercially acceptable means to protect your personal information, we cannot guarantee its absolute security. Any transmission of personal information is at your own risk.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Sharing Your Information</h2>
+                        <p>We may share your information with:</p>
+                        <ul>
+                            <li>Service providers who assist us in operating our business</li>
+                            <li>Payment processors to complete transactions</li>
+                            <li>Marketing partners (with your consent)</li>
+                            <li>Law enforcement agencies when required by law</li>
+                        </ul>
+                        <p>We do not sell, trade, or rent your personal identification information to others without your consent.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Your Rights</h2>
+                        <p>You have several rights regarding your personal information:</p>
+                        <ul>
+                            <li>Right to access your personal data</li>
+                            <li>Right to correct inaccurate or incomplete information</li>
+                            <li>Right to request deletion of your data</li>
+                            <li>Right to restrict or object to processing</li>
+                            <li>Right to data portability</li>
+                            <li>Right to withdraw consent</li>
+                        </ul>
+                        <p>To exercise any of these rights, please contact us using the information provided at the end of this policy.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Cookies and Tracking Technologies</h2>
+                        <p>Our website uses cookies and similar tracking technologies to track activity on our website and hold certain information. Cookies are files with small amounts of data that may include an anonymous unique identifier.</p>
+                        <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our service.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Children's Privacy</h2>
+                        <p>Our services are not intended for individuals under the age of 16 without parental consent. We do not knowingly collect personal information from children under 16. If we become aware that a child under 16 has provided us with personal information without verification of parental consent, we will take steps to remove that information from our servers.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Changes to This Privacy Policy</h2>
+                        <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the effective date at the top of this page.</p>
+                        <p>We recommend that you review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
+                    </div>
+
+                    <div class="policy-section">
+                        <h2>Contact Information</h2>
+                        <p>If you have any questions or concerns about this Privacy Policy, please contact us at:</p>
+                        <ul>
+                            <li><i class="fa-solid fa-envelope"></i> Email: privacy@fitneed.com</li>
+                            <li><i class="fa-solid fa-phone"></i> Phone: +233 598301201</li>
+                            <li><i class="fa-solid fa-location-dot"></i> Address: KNUST, Kumasi, Ghana</li>
+                        </ul>
+                        <p>Our data protection officer can be reached at dpo@fitneed.com for specific privacy-related inquiries.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2>Third-Party Links</h2>
+                        <p>Our website and communications may contain links to third-party websites, plugins, and applications. Clicking on those links or enabling those connections may allow third parties to collect or share data about you. We do not control these third-party websites and are not responsible for their privacy statements. We encourage you to read the privacy policy of every website you visit.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2>Retention of Data</h2>
+                        <p>We will retain your personal information only for as long as necessary for the purposes set out in this Privacy Policy. We will retain and use your information to the extent necessary to comply with our legal obligations, resolve disputes, and enforce our policies.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2>International Data Transfers</h2>
+                        <p>Your information may be transferred to — and maintained on — computers located outside of your state, province, country, or other governmental jurisdiction where the data protection laws may differ from those of your jurisdiction.</p>
+                        <p>If you are located outside Ghana and choose to provide information to us, please note that we transfer the information, including personal information, to Ghana and process it there.</p>
+                        <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2>Marketing Communications</h2>
+                        <p>With your consent, we may send you marketing communications about our products, services, events, and promotions. You can opt-out of receiving these communications at any time by:</p>
+                        <ul>
+                            <li>Clicking the "unsubscribe" link in any marketing email we send</li>
+                            <li>Contacting our customer service team</li>
+                            <li>Updating your preferences in your account settings</li>
+                        </ul>
+                        <p>Please note that even if you opt-out of marketing communications, we may still send you non-marketing communications related to your membership or transactions with us.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2>Monitoring and Recording</h2>
+                        <p>For security and safety purposes, our facilities may be monitored by CCTV cameras. Any recording is conducted in accordance with applicable laws and regulations. Signs are posted in areas where monitoring takes place.</p>
+                        <p>Additionally, phone calls to our customer service may be recorded for training and quality assurance purposes. You will be notified at the beginning of the call if recording is taking place.</p>
+                    </div>
+                    
+                    <div class="policy-section">
+                        <h2>Your Acceptance of These Terms</h2>
+                        <p>By using our facilities, services, or website, you signify your acceptance of this policy. If you do not agree to this policy, please do not use our services. Your continued use of our services following the posting of changes to this policy will be deemed your acceptance of those changes.</p>
+                    </div>
+                    
+                    <div class="policy-date">
+                        <p>Last Updated: March 1, 2025</p>
+                    </div>
+                    </div>
+                    </div>
+                    </section>
+                    
+                    <!-- FOOTER -->
+                    <footer class="primary-footer | padding-block-900 bg-secondary">
+                        <div class="container">
+                            <div class="even-columns text-center-sm-only">
+                                <div>
+                                    <h4 class="fs-700 uppercase fw-bold">Follow us</h4>
+                                    <ul class="social-icons " role="list">
+                                        <li><a href=""><i class="fa-brands fa-facebook | text-white fs-700"></i></a></li>
+                                        <li><a href=""><i class="fa-brands fa-twitter | text-white fs-700"></i></a></li>
+                                        <li><a href=""><i class="fa-brands fa-instagram | text-white fs-700"></i></a></li>
+                                        <li><a href=""><i class="fa-brands fa-linkedin | text-white fs-700"></i></a></li>
+                                    </ul>
+                                    <a class="logo">
+                                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                                </div>
+                                <div>
+                                    <h4 class="fs-700 uppercase fw-bold">Links</h4>
+                                    <ul role="list" class="primary-footer-links">
+                                        <li><a href="team.html">Our Team</a></li>
+                                        <li><a href="gallery.html">Gallery</a></li>
+                                        <li><a href="schedules.html">Schedules</a></li>
+                                        <li><a href="faq.html">FAQ's</a></li>
+                                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="fs-700 uppercase fw-bold">Quick Contacts</h4>
+                                    <ul role="list" class="contact-links">
+                                        <li><a href=""><i class="fa-solid fa-phone"></i>+233 598301201</a></li>
+                                        <li><a href=""><i class="fa-solid fa-envelope"></i></i>georgesablah5@gmail.com</a></li>
+                                        <li><a href=""><i class="fa-solid fa-user"></i>SABLAH GEORGE</a></li>
+                                        <li><a href=""><i class="fa-solid fa-globe"></i>www.fitneed.com</a></li>
+                                        <li><a href=""><i class="fa-solid fa-location-dot"></i>KNUST ,Kumasi, Ghana</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <hr>
+                            <h5 class="fs-500 fw-semi-bold text-center"><span class="special-text"><i class="fa-solid fa-dumbbell"></i>FITNEED</span> Ⓒ 2025 - All Rights Reserved</h5>
+                        </div>
+                    </footer>
+                    
+                    <script>
+                        // Simple mobile navigation toggle
+                        const navToggle = document.querySelector('.mobile-nav-toggle');
+                        const primaryNav = document.querySelector('.primary-navigation');
+                        
+                        navToggle.addEventListener('click', () => {
+                            const visibility = primaryNav.getAttribute('data-visible');
+                            
+                            if (visibility === "true") {
+                                primaryNav.setAttribute('data-visible', false);
+                                navToggle.setAttribute('aria-expanded', false);
+                            } else {
+                                primaryNav.setAttribute('data-visible', true);
+                                navToggle.setAttribute('aria-expanded', true);
+                            }
+                        });
+                    </script>
+                    </body>
+                    </html>

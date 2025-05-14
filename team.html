@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team - FITNEED</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Team Page Specific Styles */
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Sora', sans-serif;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .team-hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/team-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            text-align: center;
+            padding: 8rem 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .team-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-hero p {
+            max-width: 700px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .team-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .team-intro {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .team-intro h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .team-intro p {
+            max-width: 800px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 5rem;
+        }
+
+        .team-member {
+            background-color: #1a1a1a;
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 24px rgba(255, 87, 34, 0.2);
+        }
+
+        .member-img {
+            height: 320px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .member-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .team-member:hover .member-img img {
+            transform: scale(1.05);
+        }
+
+        .member-info {
+            padding: 1.5rem;
+        }
+
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .member-title {
+            color: #ff5722;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .member-bio {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .member-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .member-social a {
+            color: #ffffff;
+            font-size: 1.2rem;
+            transition: color 0.3s ease;
+        }
+
+        .member-social a:hover {
+            color: #ff5722;
+        }
+
+        .team-cta {
+            background-color: #1a1a1a;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 4rem;
+            border-radius: 10px;
+        }
+
+        .team-cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .team-cta p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #ff5722;
+            color: #ffffff;
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #e64a19;
+        }
+
+        .special-text {
+            color: #ff5722;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .team-hero {
+                padding: 6rem 1rem;
+            }
+
+            .team-hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .team-intro h2,
+            .team-cta h2 {
+                font-size: 2rem;
+            }
+
+            .team-grid {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .team-hero {
+                padding: 4rem 1rem;
+            }
+
+            .team-hero h1 {
+                font-size: 2rem;
+            }
+
+            .team-intro h2,
+            .team-cta h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- HEADER -->
+        <header class="primary-header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a class="logo" href="index.html">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                        <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                        <span class="visually-hidden">Menu</span>
+                    </button>
+                    <nav class="primary-navigation" id="primary-navigation">
+                        <ul aria-label="Primary" role="list" class="nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about-section">About</a></li>
+                            <li><a href="index.html#programs-section">Programs</a></li>
+                            <li><a href="index.html#products-section">Products</a></li>
+                            <li><a href="index.html#pricing-section">Pricing</a></li>
+                        </ul>
+                    </nav>
+                    <button class="btn | display-sm-none display-md-inline-flex" onclick="location.href='login.html'">LOGIN</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- TEAM HERO SECTION -->
+        <section class="team-hero">
+            <div class="container">
+                <h1>Meet Our <span class="special-text">Expert</span> Team</h1>
+                <p>The dedicated professionals behind your fitness transformation journey</p>
+            </div>
+        </section>
+
+        <!-- TEAM INTRO SECTION -->
+        <section class="team-intro">
+            <div class="team-container">
+                <h2>We're Here To <span class="special-text">Guide</span> You</h2>
+                <p>Our team of certified fitness professionals is committed to helping you achieve your health and fitness goals. 
+                   With years of experience and specialized training, we provide personalized guidance and support 
+                   to ensure your fitness journey is effective, safe, and enjoyable.</p>
+            </div>
+        </section>
+
+        <!-- TEAM MEMBERS GRID -->
+        <section class="team-members">
+            <div class="team-container">
+                <div class="team-grid">
+                    <!-- Trainer 1 -->
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="images/gym 2.jpg" alt="John Smith - Head Trainer">
+                        </div>
+                        <div class="member-info">
+                            <h3>John Agyapong</h3>
+                            <span class="member-title">Head Trainer</span>
+                            <p class="member-bio">With over 10 years of experience, John specializes in strength training and high-intensity workouts that help clients build muscle and improve overall fitness.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 2 -->
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="images/sarah.png" alt="Sarah Johnson - Nutrition Specialist">
+                        </div>
+                        <div class="member-info">
+                            <h3>Sarah Johnson</h3>
+                            <span class="member-title">Nutrition Specialist</span>
+                            <p class="member-bio">Sarah combines her passion for fitness with expert nutritional knowledge to create personalized meal plans that complement your workout regimen.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 3 -->
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="images/gym 4.jpg" alt="Mike Chen - CrossFit Coach">
+                        </div>
+                        <div class="member-info">
+                            <h3>Mike Aidoo</h3>
+                            <span class="member-title">CrossFit Coach</span>
+                            <p class="member-bio">Mike is dedicated to pushing clients beyond their limits with high-energy CrossFit sessions designed to build strength, endurance, and mental toughness.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                                <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 4 -->
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="images/dorcas.webp" alt="Lisa Rodriguez - Yoga Instructor">
+                        </div>
+                        <div class="member-info">
+                            <h3>Dorcas Afful</h3>
+                            <span class="member-title">Yoga Instructor</span>
+                            <p class="member-bio">Lisa brings tranquility to our gym with her expertly guided yoga sessions focused on flexibility, balance, stress reduction, and mindfulness practices.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 5 -->
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="images/david.jpg" alt="David Wilson - Cardio Specialist">
+                        </div>
+                        <div class="member-info">
+                            <h3>David Wilson</h3>
+                            <span class="member-title">Cardio Specialist</span>
+                            <p class="member-bio">David's high-energy cardio programs help clients improve endurance, burn calories, and strengthen their cardiovascular system for long-term health.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                                <a href="#"><i class="fa-brands fa-spotify"></i></a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trainer 6 -->
+                    <div class="team-member">
+                        <div class="member-img">
+                            <img src="images/aisha.webp" alt="Aisha Patel - Rehabilitation Coach">
+                        </div>
+                        <div class="member-info">
+                            <h3>Aisha Amoah</h3>
+                            <span class="member-title">Rehabilitation Coach</span>
+                            <p class="member-bio">Aisha specializes in helping clients recover from injuries through carefully designed exercise programs that strengthen injured areas and prevent future issues.</p>
+                            <div class="member-social">
+                                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                                <a href="#"><i class="fa-brands fa-linkedin"></i></a>
+                                <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TEAM CTA SECTION -->
+        <section class="team-cta">
+            <div class="team-container">
+                <h2>Ready To <span class="special-text">Train</span> With The Best?</h2>
+                <p>Our team of expert trainers is ready to help you transform your fitness journey. Whether you're just starting out or looking to take your workout to the next level, we have the knowledge and experience to guide you every step of the way.</p>
+                <a href="appointments.html" class="btn">Schedule a Session</a>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="primary-footer | padding-block-900 bg-secondary">
+        <div class="container">
+            <div class="even-columns text-center-sm-only">
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Follow us</h4>
+                    <ul class="social-icons " role="list">
+                        <li><a href=""><i class="fa-brands fa-facebook | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-twitter | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-instagram | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-linkedin | text-white fs-700"></i></a></li>
+                    </ul>
+                    <a class="logo" href="index.html">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Links</h4>
+                    <ul role="list" class="primary-footer-links">
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="schedules.html">Schedules</a></li>
+                        <li><a href="faq.html">FAQ's</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Quick Contacts</h4>
+                    <ul role="list" class="contact-links">
+                        <li><a href=""><i class="fa-solid fa-phone"></i>+233 598301201</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i></i>georgesablah5@gmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-user"></i>SABLAH GEORGE</a></li>
+                        <li><a href=""><i class="fa-solid fa-globe"></i>www.fitneed.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-location-dot"></i>KNUST, Kumasi, Ghana</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h5 class="fs-500 fw-semi-bold text-center"><span class="special-text"><i
+                        class="fa-solid fa-dumbbell"></i>FITNEED</span> Ⓒ 2025 - All Rights Reserved</h5>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

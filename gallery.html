@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNEED - Gallery</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Gallery Specific Styles */
+        .gallery-hero {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('images/gallery-hero.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 8rem 0;
+            text-align: center;
+            color: white;
+        }
+
+        .gallery-container {
+            padding: 4rem 0;
+        }
+
+        .gallery-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .filter-btn {
+            background: var(--clr-secondary);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--clr-accent);
+            transform: translateY(-3px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
+        }
+
+        @media (min-width: 600px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 900px) {
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .gallery-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover {
+            transform: scale(1.03);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+            padding: 1.5rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-pagination {
+            display: flex;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 3rem;
+        }
+
+        .page-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--clr-secondary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: var(--clr-accent);
+        }
+
+        .testimonial-section {
+            background: var(--clr-secondary);
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .testimonial-card {
+            background: var(--clr-dark);
+            padding: 2rem;
+            border-radius: 8px;
+            text-align: center;
+            margin: 0 auto;
+            max-width: 800px;
+        }
+
+        .testimonial-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1rem;
+            border: 3px solid var(--clr-accent);
+        }
+
+        .quote-icon {
+            color: var(--clr-accent);
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Ensure these variables match your main site */
+        :root {
+            --clr-accent: #f5634b;
+            --clr-secondary: #262626;
+            --clr-dark: #1a1a1a;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- HEADER -->
+        <header class="primary-header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a class="logo">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                        <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                        <span class="visually-hidden">Menu</span>
+                    </button>
+                    <nav class="primary-navigation" id="primary-navigation">
+                        <ul aria-label="Primary" role="list" class="nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about-section">About</a></li>
+                            <li><a href="index.html#programs-section">Programs</a></li>
+                            <li><a href="index.html#products-section">Products</a></li>
+                            <li><a href="index.html#pricing-section">Pricing</a></li>
+                            <li><a href="gallery.html" class="active">Gallery</a></li>
+                        </ul>
+                    </nav>
+                    <button class="btn | display-sm-none display-md-inline-flex" onclick="location.href='login.html'">LOGIN</button>
+                </div>
+            </div>
+        </header>
+
+
+
+                <div class="gallery-grid">
+                    <!-- Gallery Item 1 -->
+                    <div class="gallery-item">
+                        <img src="images/strength.png" alt="Strength Training Session">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Strength Training</h3>
+                            <p>Our members pushing their limits with professional guidance</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 2 -->
+                    <div class="gallery-item">
+                        <img src="images/cardio.png" alt="Cardio Section">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Cardio Zone</h3>
+                            <p>State-of-the-art cardio equipment for optimal fat burning</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 3 -->
+                    <div class="gallery-item">
+                        <img src="images/group.avif" alt="Group Fitness Class">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Group Classes</h3>
+                            <p>High-energy group fitness sessions led by expert trainers</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 4 -->
+                    <div class="gallery-item">
+                        <img src="images/personal.jpg" alt="Personal Training">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Personal Training</h3>
+                            <p>Customized workout plans tailored to individual goals</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 5 -->
+                    <div class="gallery-item">
+                        <img src="images/weight training.jpg" alt="Weight Training Area">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Weight Section</h3>
+                            <p>Comprehensive free weight area for serious lifters</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 6 -->
+                    <div class="gallery-item">
+                        <img src="images/yoga.avif" alt="Yoga Class">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Yoga Studio</h3>
+                            <p>Find your balance in our peaceful yoga and meditation space</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 7 -->
+                    <div class="gallery-item">
+                        <img src="images/fitness.webp" alt="Fitness Competition">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Fitness Event</h3>
+                            <p>Annual fitness competition showcasing member achievements</p>
+                        </div>
+                    </div>
+
+                    <!-- Gallery Item 8 -->
+                    <div class="gallery-item">
+                        <img src="images/nutrionist.webp" alt="Nutritional Guidance">
+                        <div class="gallery-item-overlay">
+                            <h3 class="fw-semi-bold">Nutrition Coaching</h3>
+                            <p>Expert nutritional guidance to complement your fitness journey</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+
+    <!-- FOOTER -->
+    <footer class="primary-footer | padding-block-900 bg-secondary">
+        <div class="container">
+            <div class="even-columns text-center-sm-only">
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Follow us</h4>
+                    <ul class="social-icons " role="list">
+                        <li><a href=""><i class="fa-brands fa-facebook | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-twitter | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-instagram | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-linkedin | text-white fs-700"></i></a></li>
+                    </ul>
+                    <a class="logo">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Links</h4>
+                    <ul role="list" class="primary-footer-links">
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="schedules.html">Schedules</a></li>
+                        <li><a href="faq.html">FAQ's</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Quick Contacts</h4>
+                    <ul role="list" class="contact-links">
+                        <li><a href=""><i class="fa-solid fa-phone"></i>+233 598301201</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i></i>georgesablah5@gmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-user"></i>SABLAH GEORGE</a></li>
+                        <li><a href=""><i class="fa-solid fa-globe"></i>www.fitneed.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-location-dot"></i>KNUST ,Kumasi, Ghana</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h5 class="fs-500 fw-semi-bold text-center"><span class="special-text"><i
+                        class="fa-solid fa-dumbbell"></i>FITNEED</span> Ⓒ 2025 - All Rights Reserved</h5>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

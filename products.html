@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNEED - More Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Additional styles for the products page */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .product-card {
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-image {
+            height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #252525;
+            padding: 1.5rem;
+        }
+
+        .product-image img {
+            max-height: 100%;
+            max-width: 100%;
+            object-fit: contain;
+        }
+
+        .product-details {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-title {
+            color: #ff6b00;
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        .product-price {
+            color: #ffffff;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+
+        .product-description {
+            color: #cccccc;
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .product-button {
+            background-color: #ff6b00;
+            color: white;
+            border: none;
+            padding: 0.7rem 1.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .product-button:hover {
+            background-color: #ff8533;
+        }
+
+        .page-heading {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .special-text {
+            color: #ff6b00;
+        }
+
+        .filters {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: #ff6b00;
+        }
+
+        .categories {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: #ff6b00;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s ease;
+            z-index: 1000;
+        }
+
+        .back-to-top:hover {
+            background-color: #ff8533;
+        }
+
+        @media (max-width: 768px) {
+            .product-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+                gap: 1.5rem;
+            }
+            
+            .product-image {
+                height: 200px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .product-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- HEADER -->
+        <header class="primary-header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                        <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                        <span class="visually-hidden">Menu</span>
+                    </button>
+                    <nav class="primary-navigation" id="primary-navigation">
+                        <ul aria-label="Primary" role="list" class="nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about-section">About</a></li>
+                            <li><a href="index.html#programs-section">Programs</a></li>
+                            <li><a href="index.html#products-section">Products</a></li>
+                            <li><a href="index.html#pricing-section">Pricing</a></li>
+                        </ul>
+                    </nav>
+                    <button class="btn | display-sm-none display-md-inline-flex" onclick="location.href='login.html'">LOGIN</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- PRODUCTS SECTION HEADER -->
+        <section class="padding-block-900 bg-secondary">
+            <div class="container">
+                <div class="page-heading">
+                    <h1 class="fs-primary-heading fw-bold uppercase">Our <span class="special-text">Products</span></h1>
+                    <p class="fs-500">Discover our full range of premium fitness supplements and equipment to enhance your workout performance.</p>
+                </div>
+
+               
+
+                <!-- PRODUCTS GRID -->
+                <div class="product-grid">
+                    <!-- Product 1 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/product1.png" alt="Vega Protein Powder">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Vega Protein Powder</h3>
+                            <p class="product-price">GH₵55.00</p>
+                            <p class="product-description">Plant-based protein powder with 20g protein per serving. Great for muscle recovery.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 2 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/product2.png" alt="Ascent Protein Powder">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Ascent Protein Powder</h3>
+                            <p class="product-price">GH₵55.00</p>
+                            <p class="product-description">Native fuel whey protein for lean muscle building and faster recovery.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 3 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/product3.png" alt="Onnit Protein Powder">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Onnit Protein Powder</h3>
+                            <p class="product-price">GH₵55.00</p>
+                            <p class="product-description">Grass-fed whey protein with essential amino acids and clean ingredients.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 4 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/product4.png" alt="Gatorade Protein Powder">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Gatorade Protein Powder</h3>
+                            <p class="product-price">GH₵55.00</p>
+                            <p class="product-description">Recovery protein shake for athletes with electrolytes and BCAAs.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 5 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/gold.png" alt="Gold Standard Whey">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Gold Standard Whey</h3>
+                            <p class="product-price">GH₵65.00</p>
+                            <p class="product-description">Premium whey isolate with 24g protein per serving and minimal carbs.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 6 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/c4.jpg" alt="C4 Pre-Workout">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">C4 Pre-Workout</h3>
+                            <p class="product-price">GH₵45.00</p>
+                            <p class="product-description">Energy-boosting formula with caffeine and beta-alanine for intense workouts.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 7 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/creatine.png" alt="Creatine Monohydrate">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Creatine Monohydrate</h3>
+                            <p class="product-price">GH₵40.00</p>
+                            <p class="product-description">Pure creatine for increased strength, power and muscle growth.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 8 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/bcaa.png" alt="BCAA Supplement">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">BCAA Supplement</h3>
+                            <p class="product-price">GH₵50.00</p>
+                            <p class="product-description">Branched-chain amino acids for improved recovery and reduced muscle soreness.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 9 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/premium.webp" alt="Premium Shaker Bottle">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Premium Shaker Bottle</h3>
+                            <p class="product-price">GH₵25.00</p>
+                            <p class="product-description">BPA-free shaker bottle with mixing ball for smooth protein shakes.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 10 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/gloves.jpg" alt="Workout Gloves">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Workout Gloves</h3>
+                            <p class="product-price">GH₵35.00</p>
+                            <p class="product-description">Premium gym gloves with wrist support for weight lifting and training.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 11 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/weigth.webp" alt="Weightlifting Belt">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Weightlifting Belt</h3>
+                            <p class="product-price">GH₵60.00</p>
+                            <p class="product-description">Durable leather belt for back support during heavy lifts and squats.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                    <!-- Product 12 -->
+                    <div class="product-card">
+                        <div class="product-image">
+                            <img src="images/t-shirt.png" alt="Fitneed T-Shirt">
+                        </div>
+                        <div class="product-details">
+                            <h3 class="product-title">Fitneed T-Shirt</h3>
+                            <p class="product-price">GH₵30.00</p>
+                            <p class="product-description">Breathable, moisture-wicking gym t-shirt with Fitneed logo.</p>
+                            <button class="product-button">Add to Cart</button>
+                        </div>
+                    </div>
+
+                   
+                </div>
+
+               
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to top button -->
+        <a href="#" class="back-to-top">
+            <i class="fa-solid fa-arrow-up"></i>
+        </a>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="primary-footer | padding-block-900 bg-secondary">
+        <div class="container">
+            <div class="even-columns text-center-sm-only">
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Follow us</h4>
+                    <ul class="social-icons " role="list">
+                        <li><a href=""><i class="fa-brands fa-facebook | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-twitter | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-instagram | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-linkedin | text-white fs-700"></i></a></li>
+                    </ul>
+                    <a class="logo">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Links</h4>
+                    <ul role="list" class="primary-footer-links">
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="schedules.html">Schedules</a></li>
+                        <li><a href="faq.html">FAQ's</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Quick Contacts</h4>
+                    <ul role="list" class="contact-links">
+                        <li><a href=""><i class="fa-solid fa-phone"></i>+233 598301201</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i></i>georgesablah5@gmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-user"></i>SABLAH GEORGE</a></li>
+                        <li><a href=""><i class="fa-solid fa-globe"></i>www.fitneed.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-location-dot"></i>KNUST ,Kumasi, Ghana</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h5 class="fs-500 fw-semi-bold text-center"><span class="special-text"><i
+                        class="fa-solid fa-dumbbell"></i>FITNEED</span> Ⓒ 2025 - All Rights Reserved</h5>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for the mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.querySelector('.mobile-nav-toggle');
+            const primaryNavigation = document.querySelector('.primary-navigation');
+
+            if (mobileNavToggle) {
+                mobileNavToggle.addEventListener('click', function() {
+                    const isExpanded = mobileNavToggle.getAttribute('aria-expanded') === 'true';
+                    mobileNavToggle.setAttribute('aria-expanded', !isExpanded);
+                    primaryNavigation.classList.toggle('expanded');
+                });
+            }
+
+            // Filter buttons
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            filterButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    // Remove active class from all buttons
+                    filterButtons.forEach(btn => btn.classList.remove('active'));
+                    // Add active class to clicked button
+                    this.classList.add('active');
+                    // Here you would add filtering logic
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

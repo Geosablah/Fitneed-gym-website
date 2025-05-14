@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITNEED - Weekly Schedules</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;700&family=Sora:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
+    <style>
+        :root {
+            --clr-primary: #f72d2d;
+            --clr-secondary: #1d1d1d;
+            --clr-dark: #0d0d0d;
+            --clr-light: #ffffff;
+            --clr-accent: #f72d2d;
+            
+            --ff-primary: 'Sora', sans-serif;
+            --ff-secondary: 'Lora', serif;
+            
+            --fs-900: 3.5rem;
+            --fs-800: 2.5rem;
+            --fs-700: 1.75rem;
+            --fs-600: 1.5rem;
+            --fs-500: 1.25rem;
+            --fs-400: 1rem;
+            --fs-300: 0.875rem;
+            --fs-200: 0.75rem;
+            
+            --fw-bold: 700;
+            --fw-semi-bold: 500;
+            --fw-regular: 400;
+            
+            --box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+        }
+        
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: var(--ff-primary);
+            font-size: var(--fs-400);
+            color: var(--clr-light);
+            background-color: var(--clr-dark);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            line-height: 1.1;
+            margin-top: 0;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        .uppercase {
+            text-transform: uppercase;
+        }
+        
+        .fw-bold {
+            font-weight: var(--fw-bold);
+        }
+        
+        .fw-semi-bold {
+            font-weight: var(--fw-semi-bold);
+        }
+        
+        .fw-regular {
+            font-weight: var(--fw-regular);
+        }
+        
+        .fs-primary-heading {
+            font-size: var(--fs-900);
+        }
+        
+        .fs-secondary-heading {
+            font-size: var(--fs-800);
+        }
+        
+        .fs-700 {
+            font-size: var(--fs-700);
+        }
+        
+        .fs-600 {
+            font-size: var(--fs-600);
+        }
+        
+        .fs-500 {
+            font-size: var(--fs-500);
+        }
+        
+        .fs-400 {
+            font-size: var(--fs-400);
+        }
+        
+        .bg-secondary {
+            background-color: var(--clr-secondary);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        .padding-block-900 {
+            padding-block: 4.5rem;
+        }
+        
+        .padding-block-700 {
+            padding-block: 3.5rem;
+        }
+        
+        .padding-block-500 {
+            padding-block: 2.5rem;
+        }
+        
+        .padding-inline-200 {
+            padding-inline: 1rem;
+        }
+        
+        .special-text {
+            color: var(--clr-primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            text-decoration: none;
+            color: var(--clr-light);
+            background-color: var(--clr-primary);
+            padding: 0.75rem 2rem;
+            border: none;
+            border-radius: 100vmax;
+            font-weight: var(--fw-semi-bold);
+            font-size: var(--fs-400);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            margin-top: 1.5rem;
+        }
+        
+        .btn:hover, .btn:focus {
+            background-color: var(--clr-light);
+            color: var(--clr-primary);
+        }
+        
+        /* Header styles */
+        .primary-header {
+            padding: 1rem 0;
+            background-color: var(--clr-secondary);
+        }
+        
+        .nav-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: var(--fs-700);
+            font-weight: var(--fw-bold);
+            color: var(--clr-light);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            color: var(--clr-primary);
+        }
+        
+        .primary-navigation {
+            margin-top: 1rem;
+            width: 100%;
+        }
+        
+        @media (min-width: 48em) {
+            .primary-navigation {
+                margin-top: 0;
+                width: auto;
+            }
+        }
+        
+        .nav-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            list-style: none;
+        }
+        
+        @media (min-width: 48em) {
+            .nav-list {
+                flex-direction: row;
+                gap: 2rem;
+            }
+        }
+        
+        .nav-list a {
+            text-decoration: none;
+            color: var(--clr-light);
+            font-weight: var(--fw-semi-bold);
+            transition: color 0.3s ease;
+        }
+        
+        .nav-list a:hover, .nav-list a:focus {
+            color: var(--clr-primary);
+        }
+        
+        .nav-list a.active {
+            color: var(--clr-primary);
+        }
+        
+        .mobile-nav-toggle {
+            display: block;
+            background: transparent;
+            border: none;
+            color: var(--clr-light);
+            font-size: var(--fs-600);
+            cursor: pointer;
+        }
+        
+        @media (min-width: 48em) {
+            .mobile-nav-toggle {
+                display: none;
+            }
+            
+            .display-sm-none {
+                display: block;
+            }
+            
+            .primary-navigation {
+                display: block;
+            }
+            
+            .nav-wrapper {
+                gap: 2rem;
+            }
+        }
+        
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+        
+        .display-sm-none {
+            display: none;
+        }
+        
+        @media (min-width: 48em) {
+            .display-sm-none {
+                display: inline-flex;
+            }
+        }
+        
+        /* Page header styles */
+        .page-header {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 5rem 0;
+            text-align: center;
+        }
+        
+        /* Schedule styles */
+        .schedule-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .tab-button {
+            background-color: var(--clr-secondary);
+            color: var(--clr-light);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: var(--fw-semi-bold);
+            transition: all 0.3s ease;
+            border-radius: 5px;
+        }
+        
+        .tab-button:hover, .tab-button:focus, .tab-button.active {
+            background-color: var(--clr-primary);
+        }
+        
+        .schedule-container {
+            overflow-x: auto;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2rem;
+            min-width: 750px;
+        }
+        
+        .schedule-table th {
+            background-color: var(--clr-primary);
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--clr-secondary);
+        }
+        
+        .schedule-table td {
+            background-color: var(--clr-secondary);
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid var(--clr-dark);
+            vertical-align: top;
+        }
+        
+        .schedule-table tr:nth-child(odd) td {
+            background-color: rgba(29, 29, 29, 0.8);
+        }
+        
+        .class-item {
+            margin-bottom: 0.75rem;
+            padding-bottom: 0.75rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .class-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .class-name {
+            font-weight: var(--fw-semi-bold);
+            color: var(--clr-primary);
+            display: block;
+        }
+        
+        .class-time {
+            font-size: var(--fs-300);
+            display: block;
+        }
+        
+        .class-trainer {
+            font-size: var(--fs-300);
+            display: block;
+            font-style: italic;
+        }
+        
+        .empty-slot {
+            font-style: italic;
+            color: rgba(255, 255, 255, 0.5);
+        }
+        
+        .schedule-note {
+            background-color: var(--clr-secondary);
+            padding: 1.5rem;
+            border-radius: 5px;
+            margin-top: 2rem;
+        }
+        
+        .schedule-note p:last-child {
+            margin-bottom: 0;
+        }
+        
+        .filter-container {
+            margin-bottom: 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+        
+        .filter-button {
+            background-color: var(--clr-secondary);
+            color: var(--clr-light);
+            border: none;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            font-weight: var(--fw-semi-bold);
+            transition: all 0.3s ease;
+            border-radius: 100vmax;
+        }
+        
+        .filter-button:hover, .filter-button:focus, .filter-button.active {
+            background-color: var(--clr-primary);
+        }
+        
+        /* Footer styles */
+        .primary-footer {
+            background-color: var(--clr-secondary);
+            color: var(--clr-light);
+        }
+        
+        .even-columns {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        @media (min-width: 48em) {
+            .even-columns {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .text-center-sm-only {
+                text-align: left;
+            }
+        }
+        
+        .text-center-sm-only {
+            text-align: center;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            padding: 0;
+            list-style: none;
+            margin: 1.5rem 0;
+        }
+        
+        @media (min-width: 48em) {
+            .social-icons {
+                justify-content: flex-start;
+            }
+        }
+        
+        .primary-footer-links, .contact-links {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+        }
+        
+        .primary-footer-links li, .contact-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .primary-footer-links a, .contact-links a {
+            color: var(--clr-light);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .primary-footer-links a:hover, .primary-footer-links a:focus,
+        .contact-links a:hover, .contact-links a:focus {
+            color: var(--clr-primary);
+        }
+        
+        .contact-links a i {
+            margin-right: 0.5rem;
+            color: var(--clr-primary);
+        }
+        
+        hr {
+            border: none;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+
+<body>
+    <main>
+        <!-- HEADER -->
+        <header class="primary-header">
+            <div class="container">
+                <div class="nav-wrapper">
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                    <button class="mobile-nav-toggle" aria-controls="primary-navigation" aria-expanded="false">
+                        <span class="fa-solid fa-bars" aria-hidden="true"></span>
+                        <span class="visually-hidden">Menu</span>
+                    </button>
+                    <nav class="primary-navigation" id="primary-navigation">
+                        <ul aria-label="Primary" role="list" class="nav-list">
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.html#about-section">About</a></li>
+                            <li><a href="index.html#programs-section">Programs</a></li>
+                            <li><a href="index.html#products-section">Products</a></li>
+                            <li><a href="index.html#pricing-section">Pricing</a></li>
+                            <li><a href="schedules.html" class="active">Schedules</a></li>
+                        </ul>
+                    </nav>
+                    <button class="btn | display-sm-none display-md-inline-flex" onclick="location.href='login.html'">LOGIN</button>
+                </div>
+            </div>
+        </header>
+
+        <!-- PAGE HEADER -->
+        <section class="page-header">
+            <div class="container">
+                <h1 class="fs-primary-heading fw-bold uppercase">Weekly <span class="special-text">Schedules</span></h1>
+                <p class="fs-500">Find the right class for your fitness journey</p>
+            </div>
+        </section>
+
+        <!-- SCHEDULES SECTION -->
+        <section class="schedules-section | padding-block-900">
+            <div class="container">
+                <div class="flow text-center">
+                    <h2 class="fs-secondary-heading fw-bold uppercase">Our Weekly <span class="special-text">Schedule</span></h2>
+                    <p class="fs-500">Join our expertly crafted fitness classes designed to meet your goals. Whether you're a beginner or an experienced athlete, we have something for everyone.</p>
+                </div>
+                
+               
+
+                <!-- SCHEDULE TABLE -->
+                <div class="schedule-container">
+                    <table class="schedule-table">
+                        <thead>
+                            <tr>
+                                <th>Time</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                                <th>Saturday</th>
+                                <th>Sunday</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>6:00 - 7:30 AM</td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Morning Strength</span>
+                                        <span class="class-time">6:00 - 7:00 AM</span>
+                                        <span class="class-trainer">Trainer: John</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Cardio Blast</span>
+                                        <span class="class-time">6:00 - 7:00 AM</span>
+                                        <span class="class-trainer">Trainer: Sarah</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">CrossFit</span>
+                                        <span class="class-time">6:00 - 7:00 AM</span>
+                                        <span class="class-trainer">Trainer: Mike</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">HIIT</span>
+                                        <span class="class-time">6:00 - 7:00 AM</span>
+                                        <span class="class-trainer">Trainer: Diana</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Functional Training</span>
+                                        <span class="class-time">6:00 - 7:00 AM</span>
+                                        <span class="class-trainer">Trainer: John</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Weekend Warrior</span>
+                                        <span class="class-time">6:30 - 7:30 AM</span>
+                                        <span class="class-trainer">Trainer: Alex</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>8:00 - 9:30 AM</td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Yoga Flow</span>
+                                        <span class="class-time">8:00 - 9:00 AM</span>
+                                        <span class="class-trainer">Trainer: Emily</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Pilates</span>
+                                        <span class="class-time">8:00 - 9:00 AM</span>
+                                        <span class="class-trainer">Trainer: Rebecca</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Yoga Flow</span>
+                                        <span class="class-time">8:00 - 9:00 AM</span>
+                                        <span class="class-trainer">Trainer: Emily</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Pilates</span>
+                                        <span class="class-time">8:00 - 9:00 AM</span>
+                                        <span class="class-trainer">Trainer: Rebecca</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Yoga Flow</span>
+                                        <span class="class-time">8:00 - 9:00 AM</span>
+                                        <span class="class-trainer">Trainer: Emily</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Yoga & Meditation</span>
+                                        <span class="class-time">8:30 - 9:30 AM</span>
+                                        <span class="class-trainer">Trainer: Emily</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Sunday Restore</span>
+                                        <span class="class-time">9:00 - 10:00 AM</span>
+                                        <span class="class-trainer">Trainer: Rebecca</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>10:00 - 11:30 AM</td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Spin Class</span>
+                                        <span class="class-time">10:00 - 11:00 AM</span>
+                                        <span class="class-trainer">Trainer: Mark</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Functional Training</span>
+                                        <span class="class-time">10:00 - 11:00 AM</span>
+                                        <span class="class-trainer">Trainer: John</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Spin Class</span>
+                                        <span class="class-time">10:00 - 11:00 AM</span>
+                                        <span class="class-trainer">Trainer: Mark</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Functional Training</span>
+                                        <span class="class-time">10:00 - 11:00 AM</span>
+                                        <span class="class-trainer">Trainer: John</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Spin Class</span>
+                                        <span class="class-time">10:00 - 11:00 AM</span>
+                                        <span class="class-trainer">Trainer: Mark</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">HIIT Circuit</span>
+                                        <span class="class-time">10:00 - 11:00 AM</span>
+                                        <span class="class-trainer">Trainer: Diana</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Family Fitness</span>
+                                        <span class="class-time">10:30 - 11:30 AM</span>
+                                        <span class="class-trainer">Trainer: Sarah</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>4:00 - 5:30 PM</td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Boxing</span>
+                                        <span class="class-time">4:00 - 5:00 PM</span>
+                                        <span class="class-trainer">Trainer: Mike</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Zumba</span>
+                                        <span class="class-time">4:00 - 5:00 PM</span>
+                                        <span class="class-trainer">Trainer: Lisa</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Boxing</span>
+                                        <span class="class-time">4:00 - 5:00 PM</span>
+                                        <span class="class-trainer">Trainer: Mike</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Zumba</span>
+                                        <span class="class-time">4:00 - 5:00 PM</span>
+                                        <span class="class-trainer">Trainer: Lisa</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Boxing</span>
+                                        <span class="class-time">4:00 - 5:00 PM</span>
+                                        <span class="class-trainer">Trainer: Mike</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Dance Fitness</span>
+                                        <span class="class-time">4:00 - 5:00 PM</span>
+                                        <span class="class-trainer">Trainer: Lisa</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>6:00 - 7:30 PM</td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">HIIT</span>
+                                        <span class="class-time">6:00 - 7:00 PM</span>
+                                        <span class="class-trainer">Trainer: Diana</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Strength Training</span>
+                                        <span class="class-time">6:00 - 7:00 PM</span>
+                                        <span class="class-trainer">Trainer: John</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">HIIT</span>
+                                        <span class="class-time">6:00 - 7:00 PM</span>
+                                        <span class="class-trainer">Trainer: Diana</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Strength Training</span>
+                                        <span class="class-time">6:00 - 7:00 PM</span>
+                                        <span class="class-trainer">Trainer: John</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Friday Fusion</span>
+                                        <span class="class-time">6:00 - 7:00 PM</span>
+                                        <span class="class-name">Friday Fusion</span>
+                                        <span class="class-time">6:00 - 7:00 PM</span>
+                                        <span class="class-trainer">Trainer: Alex</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>7:30 - 9:00 PM</td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Yoga Unwind</span>
+                                        <span class="class-time">7:30 - 8:30 PM</span>
+                                        <span class="class-trainer">Trainer: Emily</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Kickboxing</span>
+                                        <span class="class-time">7:30 - 8:30 PM</span>
+                                        <span class="class-trainer">Trainer: Mike</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Yoga Unwind</span>
+                                        <span class="class-time">7:30 - 8:30 PM</span>
+                                        <span class="class-trainer">Trainer: Emily</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <div class="class-item">
+                                        <span class="class-name">Kickboxing</span>
+                                        <span class="class-time">7:30 - 8:30 PM</span>
+                                        <span class="class-trainer">Trainer: Mike</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                                <td>
+                                    <span class="empty-slot">No Classes</span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- SCHEDULE NOTES -->
+                <div class="schedule-note">
+                    <h3 class="fs-500 fw-semi-bold">Important Notes:</h3>
+                    <p>• All classes are subject to change. Please check our mobile app or contact the gym for real-time updates.</p>
+                    <p>• Class registration opens 24 hours before class time. You can register through our mobile app or at the front desk.</p>
+                    <p>• Please arrive 10 minutes before class starts. Late arrivals may not be permitted to join.</p>
+                    <p>• Remember to bring a towel, water bottle, and appropriate workout attire.</p>
+                    <p>• Classes with fewer than 3 participants may be subject to cancellation.</p>
+                </div>
+
+                <!-- ACTION BUTTONS -->
+                <div class="text-center padding-block-500">
+                    <a href="#" class="btn">Book a Class</a>
+                    <a href="#" class="btn" style="margin-left: 1rem;">Download Schedule</a>
+                </div>
+            </div>
+        </section>
+
+        
+        <!-- APPOINTMENT SECTION -->
+        <section class="padding-block-900">
+            <div class="container">
+                <div class="text-center">
+                    <h2 class="fs-secondary-heading fw-bold uppercase">Need a <span class="special-text">Personal Program?</span></h2>
+                    <p class="fs-500 padding-block-500">Book a free consultation with one of our trainers to create a personalized fitness plan</p>
+                    <a href="appointments.html" class="btn">Book Consultation</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="primary-footer | padding-block-900 bg-secondary">
+        <div class="container">
+            <div class="even-columns text-center-sm-only">
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Follow us</h4>
+                    <ul class="social-icons" role="list">
+                        <li><a href=""><i class="fa-brands fa-facebook | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-twitter | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-instagram | text-white fs-700"></i></a></li>
+                        <li><a href=""><i class="fa-brands fa-linkedin | text-white fs-700"></i></a></li>
+                    </ul>
+                    <a class="logo">
+                        <i class="fa-solid fa-dumbbell"></i>Fitneed</a>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Links</h4>
+                    <ul role="list" class="primary-footer-links">
+                        <li><a href="team.html">Our Team</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="schedules.html">Schedules</a></li>
+                        <li><a href="faq.html">FAQ's</a></li>
+                        <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="fs-700 uppercase fw-bold">Quick Contacts</h4>
+                    <ul role="list" class="contact-links">
+                        <li><a href=""><i class="fa-solid fa-phone"></i>+233 598301201</a></li>
+                        <li><a href=""><i class="fa-solid fa-envelope"></i></i>georgesablah5@gmail.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-user"></i>SABLAH GEORGE</a></li>
+                        <li><a href=""><i class="fa-solid fa-globe"></i>www.fitneed.com</a></li>
+                        <li><a href=""><i class="fa-solid fa-location-dot"></i>KNUST, Kumasi, Ghana</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <h5 class="fs-500 fw-semi-bold text-center"><span class="special-text"><i class="fa-solid fa-dumbbell"></i>FITNEED</span> Ⓒ 2025 - All Rights Reserved</h5>
+        </div>
+    </footer>
+
+    <script>
+        // Simple mobile menu toggle
+        const navToggle = document.querySelector('.mobile-nav-toggle');
+        const primaryNav = document.querySelector('.primary-navigation');
+
+        navToggle.addEventListener('click', () => {
+            primaryNav.hasAttribute('data-visible') 
+                ? navToggle.setAttribute('aria-expanded', false)
+                : navToggle.setAttribute('aria-expanded', true);
+            primaryNav.toggleAttribute('data-visible');
+        });
+
+        // Tab functionality for schedule display
+        const tabButtons = document.querySelectorAll('.tab-button');
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                // Here you would typically show/hide content based on the selected tab
+            });
+        });
+
+        // Filter functionality
+        const filterButtons = document.querySelectorAll('.filter-button');
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+                // Here you would typically filter the schedule based on the selected filter
+            });
+        });
+    </script>
+</body>
+</html>
